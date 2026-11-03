@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midas App - Gráfico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="graficocambio">
+
+    <header>
+        <nav class="navbar navbar-dark" aria-label="Menu principal">
+            <div class="container">
+                <ul class="navbar-nav flex-row flex-wrap justify-content-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="páginainicial.html">Página Inicial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="graficocambio.html">Gráfico Cambial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="moedascont.html">Moedas por continente</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comparemoedas.html">Comparar moedas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#metas-area" aria-current="page">Metas para o dólar</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <h1 class="mb-3">Análise Cambial</h1>
+        <section class="card bg-light border-warning p-3 mb-3" aria-labelledby="selecao-cotacao-titulo">
+            <h2 id="selecao-cotacao-titulo" class="h5 text-dark">Escolha as moedas para converter</h2>
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-md-6">
+                    <label class="form-label fw-bold" for="moeda-cotacao">De (moeda que você tem)</label>
+                    <select class="form-select" id="moeda-cotacao">
+                        <option value="" selected>Carregando moedas disponíveis...</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label fw-bold" for="moeda-destino">Para (moeda que você quer)</label>
+                    <select class="form-select" id="moeda-destino" disabled>
+                        <option value="">Carregando moedas disponíveis...</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label fw-bold" for="periodo-cotacoes">Período do gráfico</label>
+                    <select class="form-select" id="periodo-cotacoes" disabled>
+                        <option value="7">7 dias</option>
+                        <option value="30" selected>1 mês</option>
+                        <option value="90">3 meses</option>
+                        <option value="365">1 ano</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="card bg-light p-3 mb-3" aria-labelledby="conversor-titulo">
+            <h2 id="conversor-titulo" class="h5 text-dark">Conversor de moedas</h2>
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-md-6">
+                    <label class="form-label fw-bold text-dark" id="rotulo-conversor" for="valor-conversor">
+                        Quantidade da moeda de origem
+                    </label>
+                    <input class="form-control" id="valor-conversor" type="number" min="0" step="any" value="1">
+                </div>
+                <div class="col-12">
+                    <p class="h5 text-dark mb-1" id="resultado-conversor" aria-live="polite">
+                        Selecione uma moeda para fazer a conversão.
+                    </p>
+                    <p class="small text-secondary mb-0">
+                        Conversão estimada com cotações da AwesomeAPI; o valor pode diferir do cobrado por bancos e casas de câmbio.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="card bg-light border-warning p-3 mt-3" style="position: relative; height: 420px; width: 100%;">
+            <canvas id="myChart"></canvas>
+        </div>
+        <p id="status-grafico" class="alert alert-secondary mt-3">
+            Selecione as duas moedas acima para carregar o gráfico.
+        </p>
+
+        <section class="card bg-light mt-4 p-3 p-md-4" aria-label="Acesso à conta e gerenciamento de metas">
+            <h2 class="h3 text-dark">Metas para o dólar</h2>
+            <p class="text-dark">As metas cadastradas ficam visíveis para todos. Entre ou crie uma conta para cadastrar e gerenciar as suas.</p>
+            <form id="auth-form" class="row g-3">
+                <div class="col-12 col-md-5">
+                    <label class="form-label" for="auth-usuario">Nome de usuário</label>
+                    <input class="form-control" id="auth-usuario" type="text" autocomplete="username" required>
+                </div>
+                <div class="col-12 col-md-5">
+                    <label class="form-label" for="auth-email">E-mail</label>
+                    <input class="form-control" id="auth-email" type="email" autocomplete="email">
+                </div>
+                <div class="col-12 col-md-5">
+                    <label class="form-label" for="auth-senha">Senha</label>
+                    <div class="input-group">
+                        <input class="form-control" id="auth-senha" type="password" autocomplete="current-password" required>
+                        <button class="btn btn-outline-secondary" id="mostrar-senha" type="button"
+                            aria-label="Mostrar senha" title="Mostrar senha">👁</button>
+                    </div>
+                </div>
+                <div class="col-12 d-flex flex-wrap gap-2">
+                    <button class="btn btn-warning" id="entrar-conta" type="submit">Entrar</button>
+                    <button class="btn btn-outline-primary" id="criar-conta" type="button">Criar conta</button>
+                    <button class="btn btn-outline-secondary" id="esqueci-senha" type="button">Esqueci minha senha</button>
+                </div>
+            </form>
+            <button class="btn btn-outline-secondary mt-3" id="sair-conta" type="button" hidden>Sair</button>
+            <p id="auth-status" class="mt-3 mb-0 text-dark" role="status" aria-live="polite">Preparando acesso...</p>
+        </section>
+
+        <section id="metas-area" class="card bg-light mt-4 p-3 p-md-4" aria-labelledby="metas-lista-titulo">
+            <h2 id="metas-lista-titulo" class="h4 text-dark">Metas cadastradas</h2>
+            <p id="metas-intro" class="text-dark">As metas são públicas para consulta. Entre ou crie uma conta para cadastrar e gerenciar as suas.</p>
+            <form id="meta-form" class="row g-3" hidden>
+                <input id="meta-object-id" type="hidden">
+                <div class="col-12 col-md-4">
+                    <label class="form-label" for="meta-valor">Valor-alvo (R$)</label>
+                    <input class="form-control" id="meta-valor" type="number" min="0.01" step="0.01" required>
+                </div>
+                <div class="col-12 col-md-8">
+                    <label class="form-label" for="meta-anotacao">Anotação</label>
+                    <input class="form-control" id="meta-anotacao" type="text" maxlength="200" required>
+                </div>
+                <div class="col-12 d-flex flex-wrap gap-2">
+                    <button class="btn btn-warning" id="meta-salvar" type="submit">Salvar meta</button>
+                    <button class="btn btn-outline-secondary" id="meta-cancelar" type="button" hidden>Cancelar edição</button>
+                </div>
+            </form>
+
+            <p id="meta-status" class="mt-3 mb-2 text-dark" role="status" aria-live="polite">Carregando metas...</p>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Valor-alvo</th>
+                            <th scope="col">Anotação</th>
+                            <th scope="col">Gerenciamento</th>
+                        </tr>
+                    </thead>
+                    <tbody id="metas-lista"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js?v=20261103-contmove"></script>
+    <script src="https://unpkg.com/parse@5.3.0/dist/parse.min.js"></script>
+    <script src="crud.js?v=20261103-5"></script>
+</body>
+</html>

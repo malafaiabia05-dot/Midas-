@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midas App - Moedas por continente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="moedas-continentes">
+    <header>
+        <nav class="navbar navbar-dark" aria-label="Menu principal">
+            <div class="container">
+                <ul class="navbar-nav flex-row flex-wrap justify-content-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="páginainicial.html">Página Inicial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="graficocambio.html">Gráfico Cambial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="moedascont.html" aria-current="page">Moedas por continente</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comparemoedas.html">Comparar moedas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="graficocambio.html#metas-area">Metas para o dólar</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <h1 class="mb-3">Moedas por continente</h1>
+        <section class="card bg-light border-warning p-3 p-md-4" aria-labelledby="continente-titulo">
+            <h2 id="continente-titulo" class="h3 text-dark">Compare as moedas</h2>
+            <p class="text-dark">Escolha um continente para comparar quanto vale 1 unidade das moedas com cotação disponível na AwesomeAPI. A porcentagem representa a participação do valor de cada moeda na soma dos valores exibidos para aquele continente.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3" role="group" aria-label="Escolher continente">
+                <button class="btn btn-outline-primary continente-botao" type="button" data-continente="americas" aria-pressed="false">Américas</button>
+                <button class="btn btn-outline-primary continente-botao" type="button" data-continente="europa" aria-pressed="false">Europa</button>
+                <button class="btn btn-outline-primary continente-botao" type="button" data-continente="asia" aria-pressed="false">Ásia</button>
+                <button class="btn btn-outline-primary continente-botao" type="button" data-continente="africa" aria-pressed="false">África</button>
+                <button class="btn btn-outline-primary continente-botao" type="button" data-continente="oceania" aria-pressed="false">Oceania</button>
+            </div>
+            <p id="status-continente" class="text-dark mb-3" role="status" aria-live="polite">Carregando moedas disponíveis...</p>
+            <div id="continente-dados" hidden>
+                <div class="grafico-pizza">
+                    <canvas id="grafico-continente" aria-label="Gráfico de pizza das cotações do continente selecionado"></canvas>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="table table-striped table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Moeda</th>
+                                <th scope="col">Valor de 1 unidade em reais</th>
+                                <th scope="col">Porcentagem no total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-continente"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="moedascont.js?v=20261103-2"></script>
+</body>
+</html>

@@ -1,10 +1,10 @@
-
 body {
     background-color: #1a1a1a;
 }
 
 h1 {
     color: #eee4b6;
+    font-size: 70px;
 }
 
 span {
@@ -13,4 +13,239 @@ span {
 
 p {
     color: #e5e5e5;
+    font-size: 20px;
+}
+button {
+    background-color: #f6e18e;
+    color: #4a4949;
+    border: none;
+    padding: 20px 40px;
+    cursor: pointer;
+    
+}
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.grafico {
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
+
+#status-grafico {
+  color: #e5e5e5;
+  font-size: 16px;
+}
+
+label[for="periodo-cotacoes"],
+label[for="moeda-cotacao"],
+label[for="moeda-destino"] {
+  color: #eee4b6;
+  margin-right: 8px;
+}
+
+#periodo-cotacoes,
+#moeda-cotacao,
+#moeda-destino {
+  background-color: #1a1a1a;
+  color: #eee4b6;
+  border: 1px solid #967c13;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .grafico {
+    height: 320px;
+  }
+}
+.paginainicial p {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.paginainicial .card p {
+    color: #4a4949;
+}
+
+.paginainicial .card {
+    border: 1px solid #967c13;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.paginainicial nav {
+    background-color: #554606;
+    padding: 10px 16px;
+}
+
+.paginainicial nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.paginainicial nav a,
+.paginainicial nav a:visited {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: #eee4b6;
+    text-decoration: none;
+}
+
+.paginainicial nav a:hover,
+.paginainicial nav a:focus-visible {
+    background-color: #967c13;
+    color: #1a1a1a;
+}
+
+#graficocambio header nav,
+#moedas-continentes header nav,
+#comparar-moedas header nav {
+    background-color: #554606;
+    padding: 10px 16px;
+}
+
+#graficocambio header nav ul,
+#moedas-continentes header nav ul,
+#comparar-moedas header nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#graficocambio header nav a,
+#graficocambio header nav a:visited,
+#moedas-continentes header nav a,
+#moedas-continentes header nav a:visited,
+#comparar-moedas header nav a,
+#comparar-moedas header nav a:visited {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: #eee4b6;
+    text-decoration: none;
+}
+
+#graficocambio header nav a:hover,
+#graficocambio header nav a:focus-visible,
+#moedas-continentes header nav a:hover,
+#moedas-continentes header nav a:focus-visible,
+#comparar-moedas header nav a:hover,
+#comparar-moedas header nav a:focus-visible {
+    background-color: #967c13;
+    color: #1a1a1a;
+}
+.paginainicial footer {
+    background-color: #554606;
+    color: #eee4b6;
+    text-align: center;
+}
+
+.paginainicial footer p {
+    font-size: 10px;
+}
+
+#midas-entrada h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
+}
+
+#graficocambio .form-select {
+    background-color: #1a1a1a;
+    color: #eee4b6;
+    border-color: #967c13;
+}
+
+#graficocambio .card p {
+    color: #4a4949;
+}
+
+#moedas-continentes .card p {
+    color: #4a4949;
+}
+
+#graficocambio .form-label {
+    color: #1a1a1a;
+}
+
+#graficocambio .form-select:focus {
+    border-color: #f6e18e;
+    box-shadow: 0 0 0 0.25rem rgba(246, 225, 142, 0.25);
+}
+
+#graficocambio #mostrar-senha {
+    padding: 0.375rem 0.75rem;
+}
+
+#graficocambio #status-grafico {
+    color: #1a1a1a;
+}
+
+#graficocambio #meta-status {
+    color: #4a4949;
+    font-size: 15px;
+}
+
+#moedas-continentes .grafico-pizza {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    height: 360px;
+    margin: 0 auto;
+}
+
+#moedas-continentes .continente-botao {
+    padding: 0.5rem 1rem;
+}
+
+#moedas-continentes .continente-botao[aria-pressed="true"] {
+    background-color: #554606;
+    border-color: #554606;
+    color: #fff;
+}
+
+#moedas-continentes #status-continente {
+    color: #4a4949;
+    font-size: 15px;
+}
+
+#comparar-moedas .card p,
+#comparar-moedas .form-label {
+    color: #4a4949;
+}
+
+#comparar-moedas .form-select {
+    background-color: #1a1a1a;
+    color: #eee4b6;
+    border-color: #967c13;
+}
+
+#comparar-moedas .grafico-barras {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+    #moedas-continentes .grafico-pizza {
+        height: 300px;
+    }
 }
