@@ -1,5 +1,12 @@
 body {
     background-color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > main {
+    flex: 1;
 }
 
 h1 {
@@ -153,14 +160,15 @@ label[for="moeda-destino"] {
     background-color: #967c13;
     color: #1a1a1a;
 }
-.paginainicial footer {
+.midas-footer {
     background-color: #554606;
     color: #eee4b6;
     text-align: center;
 }
 
-.paginainicial footer p {
-    font-size: 10px;
+.midas-footer p {
+    color: inherit;
+    font-size: 0.875rem;
 }
 
 #midas-entrada h1 {
